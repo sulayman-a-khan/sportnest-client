@@ -1,8 +1,17 @@
 // Axios instance with base URL and credentials support
 import axios from 'axios';
 
+let apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+
+// Handle common deployment copy-paste mistakes (e.g. VITE_API_BASE_URL=https://...)
+apiBaseUrl = apiBaseUrl.trim().replace(/^['"]|['"]$/g, '');
+if (apiBaseUrl.includes('VITE_API_BASE_URL=')) {
+  apiBaseUrl = apiBaseUrl.split('VITE_API_BASE_URL=')[1];
+}
+apiBaseUrl = apiBaseUrl.trim().replace(/^['"]|['"]$/g, '');
+
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api',
+  baseURL: apiBaseUrl,
   withCredentials: true,           // send cookies with every request
   headers: {
     'Content-Type': 'application/json',
