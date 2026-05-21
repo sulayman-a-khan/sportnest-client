@@ -40,12 +40,9 @@ const router = createBrowserRouter([
         element: <Facilities />,
       },
       {
-        path: 'facilities/:id',
-        element: <FacilityDetail />,
-      },
-      {
         element: <PrivateRoute />,
         children: [
+          { path: 'facilities/:id', element: <FacilityDetail /> },
           { path: 'my-bookings', element: <MyBookings /> },
           { path: 'add-facility', element: <AddFacility /> },
           { path: 'manage-my-facilities', element: <ManageFacilities /> },

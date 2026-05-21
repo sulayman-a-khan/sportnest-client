@@ -352,23 +352,13 @@ const FacilityDetail = () => {
                 </div>
 
                 {/* Confirm Booking CTA */}
-                {user ? (
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="btn-primary text-sm py-3.5 justify-center w-full font-bold cursor-pointer"
-                  >
-                    {submitting ? 'Reserving Court...' : 'Confirm Reservation'}
-                  </button>
-                ) : (
-                  <Link
-                    to="/login"
-                    state={{ from: { pathname: `/facilities/${id}` } }}
-                    className="btn-primary text-sm py-3.5 justify-center w-full font-bold cursor-pointer text-center block"
-                  >
-                    Login to Book Court
-                  </Link>
-                )}
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="btn-primary text-sm py-3.5 justify-center w-full font-bold cursor-pointer"
+                >
+                  {submitting ? 'Reserving Court...' : 'Confirm Reservation'}
+                </button>
 
                 <p className="text-[10px] text-center text-slate-400">
                   Instant secure payment at checkout or pay at counter options.
