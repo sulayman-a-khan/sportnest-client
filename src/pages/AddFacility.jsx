@@ -24,7 +24,7 @@ const AddFacility = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !sport || !location || !price || !img) {
+    if (!name || !sport || !location || !price || !img || !description) {
       toast.error('Please fill in all required fields.');
       return;
     }

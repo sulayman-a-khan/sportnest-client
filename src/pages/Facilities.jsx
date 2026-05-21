@@ -262,6 +262,10 @@ const Facilities = () => {
                         {fac.name}
                       </h3>
 
+                      <p className="text-xs text-slate-500 mb-3 line-clamp-2">
+                        {fac.description}
+                      </p>
+
                       <div className="flex flex-col gap-1 mb-4 text-xs text-slate-400">
                         <span>📍 {fac.location}</span>
                         <span>⏰ {fac.hours}</span>

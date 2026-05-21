@@ -252,10 +252,10 @@ const FacilityDetail = () => {
             {/* Standard Description / Rules card */}
             <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col gap-4">
               <h3 className="text-base font-bold text-slate-800" style={{ fontFamily: 'var(--font-display)' }}>
-                Venue Booking Rules &amp; Information
+                Facility Description & Rules
               </h3>
-              <p className="text-xs leading-relaxed text-slate-500">
-                To guarantee high-quality environments and safety for everyone, users must adhere strictly to matching sports attire, non-marking footwear (where applicable), and respect reservations schedules. Cancellations can be completed up to 24 hours prior to game start without penalty.
+              <p className="text-xs leading-relaxed text-slate-500 whitespace-pre-wrap">
+                {facility.description}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
                 {['Proper sports gear required', 'Cancellations allowed', 'Parking facilities available', 'Drinking water provided'].map((rule) => (

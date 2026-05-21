@@ -257,6 +257,10 @@ const Home = () => {
                       {fac.name}
                     </h3>
 
+                    <p className="text-xs text-slate-500 mb-3 line-clamp-2">
+                      {fac.description}
+                    </p>
+
                     {/* Location, Hours & Capacity metadata */}
                     <div className="flex flex-col gap-1 mb-4 text-xs" style={{ color: 'var(--color-muted)' }}>
                       <span>📍 {fac.location}</span>
