@@ -23,6 +23,20 @@ const defaultSlots = [
   '20:00 - 21:00', '21:00 - 22:00',
 ];
 
+const parseTimeToHours = (timeStr) => {
+  if (!timeStr) return null;
+  const str = timeStr.trim().toLowerCase();
+  const match = str.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/);
+  if (!match) return null;
+  let h = parseInt(match[1], 10);
+  const m = parseInt(match[2] || '0', 10);
+  const period = match[3];
+  
+  if (period === 'pm' && h < 12) h += 12;
+  if (period === 'am' && h === 12) h = 0;
+  return h + m / 60;
+};
+
 const FacilityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -36,8 +50,10 @@ const FacilityDetail = () => {
   const [bookingDate, setBookingDate] = useState(
     new Date(Date.now() + 86400000).toISOString().split('T')[0] // default to tomorrow
   );
-  const [timeSlot, setTimeSlot] = useState('18:00 - 19:00');
+  const [timeSlot, setTimeSlot] = useState('');
   const [duration, setDuration] = useState(1);
+  const [allBookings, setAllBookings] = useState([]);
+  const [availableSlots, setAvailableSlots] = useState([]);
 
   useEffect(() => {
     const fetchDetail = async () => {
@@ -46,6 +62,7 @@ const FacilityDetail = () => {
         const response = await axiosInstance.get(`/facilities/${id}`);
         if (response.data && response.data.success) {
           setFacility(response.data.data);
+          setAllBookings(response.data.bookings || []);
         }
       } catch (err) {
         toast.error('Failed to load facility details.');
@@ -56,6 +73,65 @@ const FacilityDetail = () => {
     };
     fetchDetail();
   }, [id, navigate]);
+
+  useEffect(() => {
+    if (!facility) return;
+    
+    // Parse hours
+    let startHour = 6;
+    let endHour = 23;
+    if (facility.hours) {
+      const parts = facility.hours.split(/[-–]| to /i);
+      if (parts.length === 2) {
+        const s = parseTimeToHours(parts[0]);
+        const e = parseTimeToHours(parts[1]);
+        if (s !== null && e !== null) {
+          startHour = s;
+          endHour = e;
+        }
+      }
+    }
+    
+    // Get booked slots for the selected date
+    const bookedForDate = allBookings.filter(b => (b.booking_date || b.date) === bookingDate);
+    
+    // Convert booked slots to [start, end] ranges
+    const bookedRanges = bookedForDate.map(b => {
+      const slotStr = b.time_slot || b.timeSlot;
+      if (!slotStr) return null;
+      const parts = slotStr.split('-');
+      if (parts.length === 2) {
+        const s = parseTimeToHours(parts[0]);
+        const e = parseTimeToHours(parts[1]);
+        return { start: s, end: e };
+      }
+      return null;
+    }).filter(Boolean);
+
+    const isOverlap = (s1, e1) => {
+      return bookedRanges.some(br => Math.max(s1, br.start) < Math.min(e1, br.end));
+    };
+
+    const slots = [];
+    for (let i = startHour; i <= endHour - duration; i++) {
+      const e = i + duration;
+      if (!isOverlap(i, e)) {
+        const formatTime = (h) => {
+          const hh = String(Math.floor(h)).padStart(2, '0');
+          const mm = String(Math.round((h % 1) * 60)).padStart(2, '0');
+          return `${hh}:${mm}`;
+        };
+        slots.push(`${formatTime(i)} - ${formatTime(e)}`);
+      }
+    }
+    
+    setAvailableSlots(slots);
+    if (slots.length > 0 && !slots.includes(timeSlot)) {
+      setTimeSlot(slots[0]);
+    } else if (slots.length === 0) {
+      setTimeSlot('');
+    }
+  }, [facility, bookingDate, duration, allBookings]);
 
   if (loading) {
     return <LoadingSpinner fullPage={true} />;
@@ -78,6 +154,11 @@ const FacilityDetail = () => {
 
     setSubmitting(true);
     try {
+      if (!timeSlot) {
+        toast.error('Please select a valid time slot.');
+        setSubmitting(false);
+        return;
+      }
       const payload = {
         facility_id: id,
         facility: id,
@@ -227,9 +308,13 @@ const FacilityDetail = () => {
                     className="w-full px-3 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20 bg-white"
                     required
                   >
-                    {defaultSlots.map((slot) => (
-                      <option key={slot} value={slot}>{slot}</option>
-                    ))}
+                    {availableSlots.length > 0 ? (
+                      availableSlots.map((slot) => (
+                        <option key={slot} value={slot}>{slot}</option>
+                      ))
+                    ) : (
+                      <option value="" disabled>No available slots</option>
+                    )}
                   </select>
                 </div>
 
