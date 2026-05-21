@@ -6,6 +6,8 @@ import SectionTitle from '../components/shared/SectionTitle';
 import LoadingSpinner from '../components/shared/LoadingSpinner';
 import { FaFutbol, FaSwimmer, FaRunning, FaUsers, FaMedal, FaCalendarAlt } from 'react-icons/fa';
 import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
+import SportsMarquee from '../components/shared/SportsMarquee';
+import { sportIcons } from '../utils/constants';
 
 /* ── Animation variants ──────────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -22,14 +24,7 @@ const stagger = {
 };
 
 /* ── Sport Icons Dictionary ───────────────────────────────── */
-const sportIcons = {
-  Football: <FaFutbol />,
-  Tennis: <GiTennisBall />,
-  Swimming: <FaSwimmer />,
-  Basketball: <GiBasketballBall />,
-  Badminton: <GiShuttlecock />,
-  'CrossFit & Gym': <GiGymBag />,
-};
+// Imported from constants.jsx
 
 
 
@@ -168,6 +163,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* ╔══════════════════════════════════════════════════╗
+          ║  1.5. SPORTS MARQUEE                             ║
+          ╚══════════════════════════════════════════════════╝ */}
+      <SportsMarquee />
 
       {/* ╔══════════════════════════════════════════════════╗
           ║  2. FEATURED FACILITIES (MINIMUM 6 CARDS)        ║

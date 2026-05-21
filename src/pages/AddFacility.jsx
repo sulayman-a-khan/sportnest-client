@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import { toast } from 'react-hot-toast';
 import SectionTitle from '../components/shared/SectionTitle';
-
-const sportsList = ['Football', 'Tennis', 'Swimming', 'Basketball', 'Badminton', 'CrossFit & Gym'];
+import { sportsList } from '../utils/constants';
 
 const AddFacility = () => {
   const navigate = useNavigate();

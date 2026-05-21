@@ -3,17 +3,9 @@ import { Link } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import { toast } from 'react-hot-toast';
 import SectionTitle from '../components/shared/SectionTitle';
-import { FaFutbol, FaSwimmer, FaRegCalendarAlt, FaHistory, FaCheckCircle, FaBan } from 'react-icons/fa';
-import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
-
-const sportIcons = {
-  Football: <FaFutbol />,
-  Tennis: <GiTennisBall />,
-  Swimming: <FaSwimmer />,
-  Basketball: <GiBasketballBall />,
-  Badminton: <GiShuttlecock />,
-  'CrossFit & Gym': <GiGymBag />,
-};
+import LoadingSpinner from '../components/shared/LoadingSpinner';
+import { sportIcons } from '../utils/constants';
+import { FaRegCalendarAlt, FaHistory, FaBan } from 'react-icons/fa';
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);

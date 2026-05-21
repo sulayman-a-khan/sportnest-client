@@ -4,17 +4,8 @@ import { useAuth } from '../providers/AuthProvider';
 import axiosInstance from '../utils/axiosInstance';
 import { toast } from 'react-hot-toast';
 import LoadingSpinner from '../components/shared/LoadingSpinner';
-import { FaFutbol, FaSwimmer, FaLocationArrow, FaClock, FaCheckCircle, FaUserAlt } from 'react-icons/fa';
-import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
-
-const sportIcons = {
-  Football: <FaFutbol />,
-  Tennis: <GiTennisBall />,
-  Swimming: <FaSwimmer />,
-  Basketball: <GiBasketballBall />,
-  Badminton: <GiShuttlecock />,
-  'CrossFit & Gym': <GiGymBag />,
-};
+import { FaLocationArrow, FaClock, FaCheckCircle, FaUserAlt } from 'react-icons/fa';
+import { sportIcons } from '../utils/constants';
 
 const defaultSlots = [
   '07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00',

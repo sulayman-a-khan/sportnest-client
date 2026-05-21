@@ -2,18 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import SectionTitle from '../components/shared/SectionTitle';
-import { FaSearch, FaFutbol, FaSwimmer, FaFilter } from 'react-icons/fa';
-import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
-
-const sportCategories = [
-  { label: 'All Sports', value: '' },
-  { label: 'Football', value: 'Football', icon: <FaFutbol /> },
-  { label: 'Tennis', value: 'Tennis', icon: <GiTennisBall /> },
-  { label: 'Swimming', value: 'Swimming', icon: <FaSwimmer /> },
-  { label: 'Basketball', value: 'Basketball', icon: <GiBasketballBall /> },
-  { label: 'Badminton', value: 'Badminton', icon: <GiShuttlecock /> },
-  { label: 'CrossFit & Gym', value: 'CrossFit & Gym', icon: <GiGymBag /> },
-];
+import { FaSearch, FaFilter } from 'react-icons/fa';
+import { sportCategories } from '../utils/constants';
 
 const Facilities = () => {
   const [facilities, setFacilities] = useState([]);

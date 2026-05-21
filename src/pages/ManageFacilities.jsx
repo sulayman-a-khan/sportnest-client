@@ -7,17 +7,7 @@ import SectionTitle from '../components/shared/SectionTitle';
 import { FaPlus, FaTrash, FaPen, FaTimes, FaFutbol, FaSwimmer } from 'react-icons/fa';
 import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const sportIcons = {
-  Football: <FaFutbol />,
-  Tennis: <GiTennisBall />,
-  Swimming: <FaSwimmer />,
-  Basketball: <GiBasketballBall />,
-  Badminton: <GiShuttlecock />,
-  'CrossFit & Gym': <GiGymBag />,
-};
-
-const sportsList = ['Football', 'Tennis', 'Swimming', 'Basketball', 'Badminton', 'CrossFit & Gym'];
+import { sportsList, sportIcons } from '../utils/constants';
 
 const ManageFacilities = () => {
   const { user } = useAuth();
