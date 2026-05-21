@@ -236,6 +236,11 @@ const Facilities = () => {
                       <span className="absolute top-3 right-3 badge-sky text-[10px]">
                         {fac.facility_type || fac.sport}
                       </span>
+                      {fac.booking_count > 0 && (
+                        <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-green-700 px-2.5 py-1 rounded-md text-[10px] font-bold border border-white/40 shadow-sm flex items-center gap-1">
+                          🔥 {fac.booking_count}+ Booked
+                        </span>
+                      )}
                     </div>
 
                     <div className="p-5 flex flex-col flex-1">
