@@ -17,6 +17,7 @@ const AddFacility = () => {
   const [price, setPrice] = useState('');
   const [hours, setHours] = useState('6:00 AM – 11:00 PM');
   const [capacity, setCapacity] = useState('');
+  const [description, setDescription] = useState('');
   const [img, setImg] = useState('');
   const [tag, setTag] = useState('Popular');
 
@@ -39,6 +40,7 @@ const AddFacility = () => {
         price: Number(price),
         hours,
         capacity: Number(capacity || 10),
+        description,
         img,
         tag,
       };
@@ -112,6 +114,20 @@ const AddFacility = () => {
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="e.g. Gulshan-2, Dhaka"
                   className="w-full px-3 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
+                  required
+                />
+              </div>
+
+              {/* Facility Description */}
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-700">
+                  Description *
+                </label>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Provide details about the facility, rules, amenities..."
+                  className="w-full px-3 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20 resize-none h-24"
                   required
                 />
               </div>

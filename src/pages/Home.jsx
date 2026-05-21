@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import SectionTitle from '../components/shared/SectionTitle';
+import LoadingSpinner from '../components/shared/LoadingSpinner';
 import { FaFutbol, FaSwimmer, FaRunning, FaUsers, FaMedal, FaCalendarAlt } from 'react-icons/fa';
 import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
 
@@ -63,11 +64,13 @@ const matchmakingQueue = [
 
 const Home = () => {
   const [dbFacilities, setDbFacilities] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   useEffect(() => {
     const fetchFeatured = async () => {
+      setLoading(true);
       try {
         const response = await axiosInstance.get('/facilities');
         if (response.data && response.data.success) {
@@ -76,6 +79,8 @@ const Home = () => {
         }
       } catch (err) {
         console.warn('Backend connection issue or empty facilities table. Standard mock values enabled.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchFeatured();
@@ -175,7 +180,11 @@ const Home = () => {
           />
 
           {/* 6-Card Responsive Grid with Equal Height */}
-          {displayFacilities.length === 0 ? (
+          {loading ? (
+            <div className="py-16">
+              <LoadingSpinner />
+            </div>
+          ) : displayFacilities.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-3xl border border-slate-100 shadow-sm mt-8">
               <span className="text-5xl block mb-4">🏟️</span>
               <h3 className="text-xl font-bold text-slate-800 mb-2" style={{ fontFamily: 'var(--font-display)' }}>
