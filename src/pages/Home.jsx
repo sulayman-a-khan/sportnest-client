@@ -248,10 +248,11 @@ const Home = () => {
                       {fac.name}
                     </h3>
 
-                    {/* Location & Hours metadata */}
+                    {/* Location, Hours & Capacity metadata */}
                     <div className="flex flex-col gap-1 mb-4 text-xs" style={{ color: 'var(--color-muted)' }}>
                       <span>📍 {fac.location}</span>
                       <span>⏰ {fac.hours}</span>
+                      <span>👥 Capacity: {fac.capacity || 10}</span>
                     </div>
 
                     {/* Pricing + Book Now CTA pinned to bottom */}

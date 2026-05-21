@@ -16,6 +16,7 @@ const AddFacility = () => {
   const [location, setLocation] = useState('');
   const [price, setPrice] = useState('');
   const [hours, setHours] = useState('6:00 AM – 11:00 PM');
+  const [capacity, setCapacity] = useState('');
   const [img, setImg] = useState('');
   const [tag, setTag] = useState('Popular');
 
@@ -37,6 +38,7 @@ const AddFacility = () => {
         price_per_hour: Number(price),
         price: Number(price),
         hours,
+        capacity: Number(capacity || 10),
         img,
         tag,
       };
@@ -114,13 +116,13 @@ const AddFacility = () => {
                 />
               </div>
 
-              {/* Price and Hours side-by-side */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Price, Hours, and Capacity */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 
                 {/* Hourly Price */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-                    Price per Hour (৳) *
+                    Price / Hour (৳) *
                   </label>
                   <input
                     type="number"
@@ -143,6 +145,22 @@ const AddFacility = () => {
                     value={hours}
                     onChange={(e) => setHours(e.target.value)}
                     placeholder="e.g. 6:00 AM – 11:00 PM"
+                    className="w-full px-3 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
+                    required
+                  />
+                </div>
+
+                {/* Capacity */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-700">
+                    Capacity *
+                  </label>
+                  <input
+                    type="number"
+                    value={capacity}
+                    onChange={(e) => setCapacity(e.target.value)}
+                    placeholder="e.g. 10"
+                    min="1"
                     className="w-full px-3 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
                     required
                   />
