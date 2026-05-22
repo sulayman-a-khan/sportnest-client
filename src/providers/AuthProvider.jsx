@@ -54,8 +54,8 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (res.data?.success) {
-        setUser(res.data.user);
-        toast.success(res.data.message || "Registered successfully");
+        // Strict Registration: Account created, but NO auto-login.
+        toast.success(res.data.message || "Registered successfully. Please log in.");
         return res.data;
       }
     } catch (error) {
