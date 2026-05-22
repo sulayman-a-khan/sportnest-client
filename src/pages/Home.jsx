@@ -310,10 +310,10 @@ const Home = () => {
         <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-20 rounded-l-[100px] -z-10 hidden md:block" />
         
         <div className="container-base relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             
             {/* Left Column: Typography & Info */}
-            <div className="max-w-xl">
+            <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
               <span className="badge-orange mb-6 inline-flex uppercase tracking-widest text-[10px] font-bold">
                 Professional Training
               </span>
@@ -321,13 +321,13 @@ const Home = () => {
                 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-slate-900"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Elite Academy & <br/> Expert Coaching
+                Elite Academy & <br className="hidden md:block" /> Expert Coaching
               </h2>
               <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8">
                 Take your game to the next level with customized programs led by certified professional athletes. From junior foundations to adult masterclasses, our static curriculum ensures consistent growth without the pressure of live bookings.
               </p>
               
-              <div className="flex items-center gap-8">
+              <div className="flex items-center justify-center lg:justify-start gap-8">
                 <div className="flex flex-col">
                   <span className="text-3xl md:text-4xl font-black text-green-600 mb-1">50+</span>
                   <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Certified Coaches</span>
@@ -341,14 +341,14 @@ const Home = () => {
             </div>
 
             {/* Right Column: Custom Stylized Cards (Static) */}
-            <div className="flex flex-col gap-6 relative mt-10 lg:mt-0">
+            <div className="flex flex-col gap-5 lg:gap-6 relative mt-6 lg:mt-0">
               {/* Card 1 */}
-              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all">
+              <div className="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 md:gap-5 transform hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center text-2xl flex-shrink-0">
                   <FaRunning />
                 </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <div className="flex flex-col items-center sm:items-start">
+                  <div className="flex items-center justify-center sm:justify-start gap-3 mb-2 flex-wrap">
                     <h4 className="text-lg font-bold text-slate-800">Junior Development</h4>
                     <span className="badge-green text-[9px] px-2 py-0.5">Ages 6-15</span>
                   </div>
@@ -359,12 +359,12 @@ const Home = () => {
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all ml-0 md:ml-12">
+              <div className="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 md:gap-5 transform hover:-translate-y-1 transition-all ml-0 md:ml-12">
                 <div className="w-14 h-14 rounded-2xl bg-sky-50 text-sky-500 flex items-center justify-center text-2xl flex-shrink-0">
                   <GiGymBag />
                 </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <div className="flex flex-col items-center sm:items-start">
+                  <div className="flex items-center justify-center sm:justify-start gap-3 mb-2 flex-wrap">
                     <h4 className="text-lg font-bold text-slate-800">Pro League Prep</h4>
                     <span className="badge-green text-[9px] px-2 py-0.5">Ages 16-22</span>
                   </div>
@@ -375,12 +375,12 @@ const Home = () => {
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all">
+              <div className="bg-white p-5 md:p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 md:gap-5 transform hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center text-2xl flex-shrink-0">
                   <FaMedal />
                 </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <div className="flex flex-col items-center sm:items-start">
+                  <div className="flex items-center justify-center sm:justify-start gap-3 mb-2 flex-wrap">
                     <h4 className="text-lg font-bold text-slate-800">Adult Masterclass</h4>
                     <span className="badge-green text-[9px] px-2 py-0.5">Ages 23+</span>
                   </div>
