@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import SectionTitle from '../components/shared/SectionTitle';
 import LoadingSpinner from '../components/shared/LoadingSpinner';
-import { FaFutbol, FaSwimmer, FaRunning, FaUsers, FaMedal, FaCalendarAlt } from 'react-icons/fa';
+import { FaFutbol, FaSwimmer, FaRunning, FaUsers, FaMedal, FaCalendarAlt, FaApple, FaGooglePlay } from 'react-icons/fa';
 import { GiTennisBall, GiBasketballBall, GiShuttlecock, GiGymBag } from 'react-icons/gi';
 import SportsMarquee from '../components/shared/SportsMarquee';
 import { sportIcons } from '../utils/constants';
@@ -28,34 +28,9 @@ const stagger = {
 
 
 
-/* ── Extra Section 1: Coaching Programs ─────────────────── */
-const academyPrograms = [
-  {
-    title: 'Junior Development Academy',
-    ageGroup: 'Ages 6 - 15',
-    desc: 'Structured sports foundations focusing on teamwork, coordinate motor skills, and core rules of popular sports.',
-    perks: ['Professional certified youth trainers', 'Flexible weekend sessions', 'Progress reports & skill tracking'],
-  },
-  {
-    title: 'Pro League Preparatory',
-    ageGroup: 'Ages 16 - 22',
-    desc: 'High-intensity conditioning, tactical skill-drills, and competitive league exposure for prospective career athletes.',
-    perks: ['Personalized physical assessment', 'Video analysis of movement', 'Access to exclusive local tryouts'],
-  },
-  {
-    title: 'Adult Performance Masterclass',
-    ageGroup: 'Ages 23+',
-    desc: 'Perfect for working professionals seeking advanced technical improvement or competitive recreation clubs.',
-    perks: ['Evening and morning matches', 'Strategy analysis board', 'Active league scoreboards'],
-  },
-];
 
-/* ── Extra Section 2: Matchmaking Players Mock ───────────── */
-const matchmakingQueue = [
-  { name: 'Sameer Rahman', sport: 'Football', skill: 'Intermediate', lookingFor: 'Needs 2 players', time: 'Today, 6:00 PM' },
-  { name: 'Nisha Tasnim', sport: 'Tennis', skill: 'Advanced', lookingFor: 'Needs a singles partner', time: 'Tomorrow, 8:00 AM' },
-  { name: 'Farhan Kabir', sport: 'Basketball', skill: 'Beginner', lookingFor: 'Needs 5v5 pickup squad', time: 'Wednesday, 7:30 PM' },
-];
+
+
 
 const Home = () => {
   const [dbFacilities, setDbFacilities] = useState([]);
@@ -328,162 +303,90 @@ const Home = () => {
 
 
       {/* ╔══════════════════════════════════════════════════╗
-          ║  3. EXTRA CREATIVE SECTION 1: COACHING ACADEMY   ║
+          ║  3. ELITE ACADEMY & EXPERT COACHING STATIC       ║
           ╚══════════════════════════════════════════════════╝ */}
-      <section className="section-pad bg-white">
-        <div className="container-base">
-          <SectionTitle
-            title="Elite Academy & Expert Coaching"
-            subtitle="Take your game to the next level with customized programs led by certified professional athletes."
-          />
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-          >
-            {academyPrograms.map(({ title, ageGroup, desc, perks }, idx) => (
-              <motion.div
-                key={title}
-                variants={fadeUp(idx * 0.1)}
-                className="flex flex-col h-full p-6 rounded-2xl border border-slate-100 hover:border-slate-200 transition-all shadow-sm hover:shadow-md"
-                style={{ background: 'var(--color-surface)' }}
-              >
-                {/* Age limit badge */}
-                <div className="mb-4">
-                  <span className="badge-green text-xs">
-                    {ageGroup}
-                  </span>
-                </div>
-
-                {/* Program title */}
-                <h3 
-                  className="text-xl font-bold mb-3"
-                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-dark)' }}
-                >
-                  {title}
-                </h3>
-
-                {/* Program desc */}
-                <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: 'var(--color-muted)' }}>
-                  {desc}
-                </p>
-
-                {/* Program bullet benefits */}
-                <ul className="flex flex-col gap-2 mb-6 border-t border-slate-200/50 pt-4">
-                  {perks.map((perk, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                      <span className="text-green-600 font-bold">✓</span>
-                      {perk}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* standard button style */}
-                <Link to="/facilities" className="btn-primary text-xs py-2.5 justify-center w-full mt-auto">
-                  View Program Schedule →
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ╔══════════════════════════════════════════════════╗
-          ║  4. EXTRA CREATIVE SECTION 2: MATCHMAKING HUB     ║
-          ╚══════════════════════════════════════════════════╝ */}
-      <section className="section-pad bg-slate-900 text-white relative overflow-hidden">
-        {/* Abstract background shapes */}
-        <div className="absolute top-0 left-0 w-80 h-80 rounded-full blur-3xl opacity-10 bg-green-500 -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10 bg-sky-500 translate-x-1/2 translate-y-1/2" />
-
+      <section className="section-pad bg-white relative overflow-hidden">
+        {/* Background Decorative Shape */}
+        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-20 rounded-l-[100px] -z-10 hidden md:block" />
+        
         <div className="container-base relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left Col: Explanatory Copy */}
-            <div className="lg:col-span-5">
-              <SectionTitle
-                title="Teammate Matchmaking"
-                subtitle="Never let a missing player cancel your game again. Connect with active sports players in your neighbourhood, join existing weekend squads, and build local competitive leagues easily."
-                center={false}
-              />
-
-              <div className="flex flex-col gap-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-green-400">
-                    <FaUsers />
-                  </span>
-                  <div>
-                    <h4 className="font-semibold text-sm">Join Pickup Teams</h4>
-                    <p className="text-xs text-slate-400">Jump straight into community matches with friendly players.</p>
-                  </div>
+            {/* Left Column: Typography & Info */}
+            <div className="max-w-xl">
+              <span className="badge-orange mb-6 inline-flex uppercase tracking-widest text-[10px] font-bold">
+                Professional Training
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl font-black mb-6 leading-tight text-slate-900"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Elite Academy & <br/> Expert Coaching
+              </h2>
+              <p className="text-slate-500 text-base md:text-lg leading-relaxed mb-8">
+                Take your game to the next level with customized programs led by certified professional athletes. From junior foundations to adult masterclasses, our static curriculum ensures consistent growth without the pressure of live bookings.
+              </p>
+              
+              <div className="flex items-center gap-8">
+                <div className="flex flex-col">
+                  <span className="text-3xl md:text-4xl font-black text-green-600 mb-1">50+</span>
+                  <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Certified Coaches</span>
                 </div>
-
-                <div className="flex items-center gap-3">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-sky-400">
-                    <FaCalendarAlt />
-                  </span>
-                  <div>
-                    <h4 className="font-semibold text-sm">Organized Leagues</h4>
-                    <p className="text-xs text-slate-400">Register squads for structured monthly local league tournaments.</p>
-                  </div>
+                <div className="w-px h-12 bg-slate-200"></div>
+                <div className="flex flex-col">
+                  <span className="text-3xl md:text-4xl font-black text-sky-600 mb-1">3</span>
+                  <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Skill Tiers</span>
                 </div>
+              </div>
+            </div>
 
-                <div className="flex items-center gap-3">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-orange-400">
-                    <FaMedal />
-                  </span>
-                  <div>
-                    <h4 className="font-semibold text-sm">Track Skill Tiers</h4>
-                    <p className="text-xs text-slate-400">Earn medals, climb scoreboards, and update player ratings.</p>
+            {/* Right Column: Custom Stylized Cards (Static) */}
+            <div className="flex flex-col gap-6 relative mt-10 lg:mt-0">
+              {/* Card 1 */}
+              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center text-2xl flex-shrink-0">
+                  <FaRunning />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <h4 className="text-lg font-bold text-slate-800">Junior Development</h4>
+                    <span className="badge-green text-[9px] px-2 py-0.5">Ages 6-15</span>
                   </div>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    Structured foundations focusing on teamwork, coordinate motor skills, and core rules of popular sports.
+                  </p>
                 </div>
               </div>
 
-              {/* Same Button Style */}
-              <Link to="/register" className="btn-primary text-sm py-3 px-6 shadow-none hover:shadow-lg">
-                Join Matchmaking Hub
-              </Link>
-            </div>
-
-            {/* Right Col: Interactive Visual Mock System */}
-            <div className="lg:col-span-7">
-              <div className="p-6 rounded-2xl border border-white/10" style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(12px)' }}>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs uppercase tracking-widest font-semibold text-slate-400">
-                    Active Match Lobby
-                  </span>
-                  <span className="badge-green text-[10px]">
-                    ● 42 Players Online
-                  </span>
+              {/* Card 2 */}
+              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all ml-0 md:ml-12">
+                <div className="w-14 h-14 rounded-2xl bg-sky-50 text-sky-500 flex items-center justify-center text-2xl flex-shrink-0">
+                  <GiGymBag />
                 </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <h4 className="text-lg font-bold text-slate-800">Pro League Prep</h4>
+                    <span className="badge-green text-[9px] px-2 py-0.5">Ages 16-22</span>
+                  </div>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    High-intensity conditioning, tactical skill-drills, and competitive league exposure for prospective career athletes.
+                  </p>
+                </div>
+              </div>
 
-                {/* Mock Lobby Queue Cards */}
-                <div className="flex flex-col gap-4">
-                  {matchmakingQueue.map(({ name, sport, skill, lookingFor, time }) => (
-                    <div 
-                      key={name}
-                      className="p-4 rounded-xl border border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:bg-white/5"
-                      style={{ background: 'rgba(255,255,255,0.02)' }}
-                    >
-                      <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <h5 className="font-bold text-sm text-white">{name}</h5>
-                          <span className="badge-sky text-[9px] px-2 py-0.5">{sport}</span>
-                        </div>
-                        <p className="text-xs text-slate-400 leading-relaxed">
-                          Skill: <strong className="text-slate-200">{skill}</strong> · {lookingFor}
-                        </p>
-                      </div>
-
-                      <div className="text-left sm:text-right w-full sm:w-auto border-t sm:border-t-0 pt-2 sm:pt-0">
-                        <span className="text-[10px] text-slate-400 block mb-1">Schedule</span>
-                        <span className="text-xs text-green-400 font-medium block">{time}</span>
-                      </div>
-                    </div>
-                  ))}
+              {/* Card 3 */}
+              <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-start gap-5 transform hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center text-2xl flex-shrink-0">
+                  <FaMedal />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <h4 className="text-lg font-bold text-slate-800">Adult Masterclass</h4>
+                    <span className="badge-green text-[9px] px-2 py-0.5">Ages 23+</span>
+                  </div>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    Perfect for working professionals seeking advanced technical improvement or competitive recreation clubs.
+                  </p>
                 </div>
               </div>
             </div>
@@ -493,54 +396,135 @@ const Home = () => {
       </section>
 
       {/* ╔══════════════════════════════════════════════════╗
-          ║  5. CTA SECTION                                  ║
+          ║  4. TEAM MATCHMAKING & COMMUNITY HUB             ║
           ╚══════════════════════════════════════════════════╝ */}
-      <section className="section-pad">
-        <div className="container-base">
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl px-8 py-16 text-center text-white"
-            style={{ background: 'var(--gradient-brand)' }}
-          >
-            {/* Gradient background circles */}
-            <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-20"
-              style={{ background: 'rgba(255,255,255,0.4)', transform: 'translate(30%,-30%)' }} />
-            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-3xl opacity-15"
-              style={{ background: 'rgba(0,0,0,0.3)', transform: 'translate(-30%,30%)' }} />
+      <section className="section-pad bg-slate-900 text-white relative overflow-hidden">
+        {/* Abstract background shapes */}
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-green-500 translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-sky-500 -translate-x-1/3 translate-y-1/3" />
 
-            <div className="relative z-10">
-              <span className="inline-block text-4xl mb-4">🏆</span>
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
+        <div className="container-base relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="badge-green mb-4 inline-flex">Community First</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+              Teammate Matchmaking
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg">
+              Never let a missing player cancel your game. Connect with active athletes in your neighborhood, join pickup squads, and build local competitive leagues easily.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:bg-white/10 transition-all text-center flex flex-col items-center group cursor-default">
+              <div className="w-16 h-16 rounded-2xl bg-green-500/20 text-green-400 flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                <FaUsers />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-white">Join Pickup Teams</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Jump straight into community matches with friendly players looking to fill out their rosters.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:bg-white/10 transition-all text-center flex flex-col items-center group cursor-default">
+              <div className="w-16 h-16 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                <FaCalendarAlt />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-white">Organized Leagues</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Register squads for structured monthly local league tournaments and regular weekend matches.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:bg-white/10 transition-all text-center flex flex-col items-center group cursor-default">
+              <div className="w-16 h-16 rounded-2xl bg-orange-500/20 text-orange-400 flex items-center justify-center text-3xl mb-6 shadow-inner group-hover:scale-110 transition-transform">
+                <FaMedal />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-white">Track Skill Tiers</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Earn medals, climb scoreboards, and update player ratings as you improve your game.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ╔══════════════════════════════════════════════════╗
+          ║  5. MOBILE APP DOWNLOAD SECTION STATIC           ║
+          ╚══════════════════════════════════════════════════╝ */}
+      <section className="section-pad relative bg-white overflow-hidden">
+        {/* Background Decorative Rings */}
+        <div className="absolute -top-40 -right-40 w-96 h-96 border-[40px] border-green-50 rounded-full opacity-50 pointer-events-none" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 border-[40px] border-sky-50 rounded-full opacity-50 pointer-events-none" />
+        
+        <div className="container-base relative z-10">
+          <div className="bg-slate-900 rounded-[40px] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl relative overflow-hidden">
+            
+            {/* Inner glowing effect */}
+            <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-green-500/30 rounded-full blur-[80px] -translate-y-1/2 -z-10" />
+            <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-sky-500/20 rounded-full blur-[80px] -z-10" />
+
+            {/* Left Content */}
+            <div className="max-w-xl text-center lg:text-left relative z-10">
+              <span className="badge-green mb-6 inline-flex font-bold tracking-widest text-[10px] uppercase border border-green-500/30 bg-green-500/10 text-green-400">
+                Coming Soon
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl font-black mb-6 leading-tight text-white"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Ready to Book Your Next Game?
+                Carry the Stadium <br className="hidden md:block"/> in Your Pocket.
               </h2>
-              <p className="text-base mb-8 max-w-md mx-auto opacity-90">
-                Join thousands of local athletes booking football turf, tennis courts, and swimming pools on SportNest daily.
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-10">
+                Book your favorite sports facilities on the go, track your matchmaking rating, and connect with teammates directly from the SportNest mobile app. Experience a seamless, zero-friction booking process anywhere, anytime.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  to="/register"
-                  id="cta-register-btn"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-base transition-all hover:scale-105 hover:shadow-2xl"
-                  style={{ background: '#fff', color: 'var(--color-brand-primary)' }}
-                >
-                  Start Booking Free →
-                </Link>
-                <Link
-                  to="/facilities"
-                  id="cta-browse-btn"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-base border-2 border-white/40 transition-all hover:bg-white/10 hover:scale-105"
-                >
-                  Browse Facilities
-                </Link>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                {/* Non-functional App Store Button */}
+                <button className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/10 transition-all px-6 py-3.5 rounded-2xl cursor-default group">
+                  <FaApple className="text-3xl text-white group-hover:text-slate-200 transition-colors" />
+                  <div className="text-left">
+                    <span className="block text-[9px] text-slate-300 uppercase tracking-widest font-semibold">Download on the</span>
+                    <span className="block text-lg font-bold text-white leading-none">App Store</span>
+                  </div>
+                </button>
+                
+                {/* Non-functional Google Play Button */}
+                <button className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/10 transition-all px-6 py-3.5 rounded-2xl cursor-default group">
+                  <FaGooglePlay className="text-2xl text-white group-hover:text-slate-200 transition-colors" />
+                  <div className="text-left">
+                    <span className="block text-[9px] text-slate-300 uppercase tracking-widest font-semibold">GET IT ON</span>
+                    <span className="block text-lg font-bold text-white leading-none">Google Play</span>
+                  </div>
+                </button>
               </div>
             </div>
-          </motion.div>
+
+            {/* Right Content - Abstract Phone Mockup Art */}
+            <div className="relative w-full max-w-sm flex justify-center lg:justify-end z-10 hidden md:flex">
+              <div className="relative w-64 h-[500px] bg-slate-800 rounded-[40px] border-[8px] border-slate-700 shadow-2xl overflow-hidden transform rotate-6 hover:rotate-0 transition-transform duration-500 flex flex-col">
+                {/* Fake Notch */}
+                <div className="absolute top-0 inset-x-0 h-7 bg-slate-700 w-1/2 mx-auto rounded-b-xl z-20"></div>
+                
+                {/* Fake Screen UI */}
+                <div className="flex-1 bg-slate-50 p-4 pt-12 flex flex-col gap-4">
+                  <div className="w-full h-32 bg-green-100 rounded-2xl"></div>
+                  <div className="w-3/4 h-6 bg-slate-200 rounded-full"></div>
+                  <div className="w-1/2 h-4 bg-slate-200 rounded-full mb-4"></div>
+                  
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="w-full h-24 bg-sky-100 rounded-2xl"></div>
+                    <div className="w-full h-24 bg-orange-100 rounded-2xl"></div>
+                    <div className="w-full h-24 bg-purple-100 rounded-2xl"></div>
+                    <div className="w-full h-24 bg-pink-100 rounded-2xl"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </section>
     </>
