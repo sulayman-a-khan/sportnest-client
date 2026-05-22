@@ -22,6 +22,7 @@ const ManageFacilities = () => {
   const [editLocation, setEditLocation] = useState('');
   const [editPrice, setEditPrice] = useState('');
   const [editHours, setEditHours] = useState('');
+  const [editCapacity, setEditCapacity] = useState('');
   const [editImg, setEditImg] = useState('');
   const [editTag, setEditTag] = useState('');
   const [editDescription, setEditDescription] = useState('');
@@ -79,6 +80,7 @@ const ManageFacilities = () => {
     setEditLocation(fac.location);
     setEditPrice(fac.price_per_hour || fac.price);
     setEditHours(fac.hours);
+    setEditCapacity(fac.capacity || '');
     setEditImg(fac.img);
     setEditTag(fac.tag || 'Popular');
     setEditDescription(fac.description || '');
@@ -90,7 +92,7 @@ const ManageFacilities = () => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
-    if (!editName || !editSport || !editLocation || !editPrice || !editImg) {
+    if (!editName || !editSport || !editLocation || !editPrice || !editImg || !editCapacity) {
       toast.error('Please fill in all required fields.');
       return;
     }
@@ -105,6 +107,7 @@ const ManageFacilities = () => {
         price_per_hour: Number(editPrice),
         price: Number(editPrice),
         hours: editHours,
+        capacity: Number(editCapacity),
         img: editImg,
         tag: editTag,
         description: editDescription,
@@ -386,17 +389,32 @@ const ManageFacilities = () => {
                   />
                 </div>
 
-                {/* Feature Tag */}
-                <div className="flex flex-col gap-1">
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Feature Tag
-                  </label>
-                  <input
-                    type="text"
-                    value={editTag}
-                    onChange={(e) => setEditTag(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl border text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
-                  />
+                {/* Feature Tag & Capacity */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                      Capacity *
+                    </label>
+                    <input
+                      type="number"
+                      value={editCapacity}
+                      onChange={(e) => setEditCapacity(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-xl border text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                      Feature Tag
+                    </label>
+                    <input
+                      type="text"
+                      value={editTag}
+                      onChange={(e) => setEditTag(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-xl border text-sm text-slate-800 outline-none focus:ring-2 focus:ring-green-500/20"
+                    />
+                  </div>
                 </div>
 
                 {/* Save CTA */}
