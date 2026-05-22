@@ -57,7 +57,7 @@ const Register = () => {
     try {
       await register(name, email, password, photoUrl);
       // Success is toasted in the provider, redirect immediately!
-      navigate(from, { replace: true });
+      navigate('/login', { replace: true });
     } catch (err) {
       // Errors are already handled and toasted by the AuthProvider
     } finally {
