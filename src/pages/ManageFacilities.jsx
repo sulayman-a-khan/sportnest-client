@@ -220,6 +220,7 @@ const ManageFacilities = () => {
                     <div className="flex flex-col gap-1 mb-4 text-xs text-slate-400">
                       <span>📍 {fac.location}</span>
                       <span>⏰ {fac.hours}</span>
+                      <span>👥 Capacity: {fac.capacity || 10} persons</span>
                     </div>
 
                     <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 gap-2">
